@@ -1,0 +1,45 @@
+name: Test React
+
+on:
+  push:
+    paths:
+      - client/**
+    branches: 
+      - main
+  pull_request:
+    paths:
+      - client/**
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: setup-node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+      
+      - name: cache-node_modules
+        uses: actions/cache@v3
+        id: node_modules_cache_id
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: './client/node_modules'
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+      
+      - name: npm-install
+        if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
+        working-directory: ./client
+        run: npm i
+      
+      - name: run test
+        env:
+          CI: 'true'
+        run: npm test
