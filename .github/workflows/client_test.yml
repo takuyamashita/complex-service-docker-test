@@ -39,6 +39,7 @@ jobs:
         run: npm i
       
       - name: run test
+        working-directory: ./client
         env:
           CI: 'true'
         run: npm test
