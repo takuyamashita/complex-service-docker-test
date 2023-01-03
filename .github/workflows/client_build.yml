@@ -6,10 +6,10 @@ on:
       - "Test React"
     types:
       - completed
-    branches-ignore:
-      - '**'
+    #branches-ignore:
+    #  - '**'
     tags:
-      - 'v*'
+      - "v*"
     
 jobs:
   build:
