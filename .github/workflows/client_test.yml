@@ -4,8 +4,10 @@ on:
   push:
     paths:
       - client/**
-    branches: 
-      - main
+    #branches: 
+    #  - main
+    tags:
+      - "v*"
   pull_request:
     paths:
       - client/**
