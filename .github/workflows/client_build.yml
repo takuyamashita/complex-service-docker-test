@@ -8,8 +8,9 @@ on:
       - completed
     #branches-ignore:
     #  - '**'
-    tags:
-      - "v*"
+    push:
+      tags:
+        - "v*"
     
 jobs:
   build:
