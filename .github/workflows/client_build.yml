@@ -1,4 +1,4 @@
-name: Test React
+name: Build Client after Test React
 
 on:
   workflow_dispatch:
