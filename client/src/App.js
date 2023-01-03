@@ -6,6 +6,7 @@ import OtherPage from './OtherPage';
 import Fib from './Fib';
 
 function App() {
+  console.log("version 2")
   return (
     <Router>
       <div className="App">
